@@ -1,0 +1,53 @@
+<table>
+
+<tr>
+<% count=0 %>
+<% @image_gallery.each do |img|%>
+    <% if (count % 3) == 0%>
+        </tr>
+        <tr>
+    <% end %>
+    <% count+=1 %>
+    <td>
+
+
+    <div class="card">
+    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+      data-mdb-ripple-color="light">
+          <% if img.images.attached? %>
+              <%= image_tag img.images.first, width:"400", height:"400", alt:"#"%>
+          <%end%><br />
+      <a href="#!">
+        <div class="mask">
+          <div class="d-flex justify-content-start align-items-end h-100"></div>
+        </div>
+        <div class="hover-overlay">
+          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+        </div>
+      </a>
+    </div>
+    <div class="card-body">
+      <a href="" class="text-reset">
+        <h5 class="card-title mb-3">Name : <%= img.name %><br /></h5>
+      </a>
+      <a href="" class="text-reset">
+        <p>Category :<%= img.category %><br /></p>
+      </a>
+      <a href="" class="text-reset">
+        <p>Colour :<%= img.color%><br /></p>
+      </a>
+      <a href="" class="text-reset">
+        <p>Description : <%= img.description %><br /></p>
+      </a>
+      <h6 class="mb-3">Price : <%= img.price %></h6><hr>
+    <%= button_to 'Add to Cart', line_items_path(:store_id => img.id)%> </td>
+      
+    </div>
+  </div>
+
+
+    
+    
+<% end %>
+</tr>
+</table>

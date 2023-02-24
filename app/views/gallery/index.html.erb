@@ -1,0 +1,16 @@
+<%= form_for(:search,:url=>"/gallery/search") do |f| %>
+    <h5>Search <input type="text" name="search">
+    <input type="submit" value="Go"></h5>
+<% end %><br />
+
+
+
+<section style="background-color: #eee;">
+  <div class="text-center container py-5">
+    <h2 class="mt-4 mb-5"><strong>Our Products:</strong><hr></h2>
+
+    <div class="column">
+        <%= render 'image_gallery' %>
+    </div>
+  </div>
+</section>

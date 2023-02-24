@@ -1,0 +1,16 @@
+Hello!!
+
+Your order has been processed.
+The details are:
+
+<% @cart.line_items.each do |item|%>
+    Product Name: <%= item.store.name%>
+    Product Catagory: <%= item.store.category%>
+    Product Description: <%= item.store.description%>
+    Product Price:<%= number_to_currency(item.store.price)%>
+			  
+<% end %>
+Thanks for using The Nursery. Keep shopping!!
+
+Thanks
+The Nursery

@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<%# <% @store.images.each do |img| %>
+  <%# <%= image_tag @store.images, width:"50%" %> 
+<%# <%end%>
+<% if @store.images.any? %>
+   <h3>Attachments:</h3>
+   <% @store.images.each do |file| %>
+     <% if file.variable? %>
+       <%= image_tag file, width:"250px"%>
+     <% elsif file.previewable? %>
+       <%= image_tag file.preview, rails_blob_path(file, disposition: :attachment) %>
+     <% else %>
+       <%= link_to file.filename, rails_blob_path(file, disposition: :attachment) %>
+     <% end %>
+   <% end %>
+ <% end %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @store.name %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @store.category %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @store.color %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @store.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @store.price %>
+</p>
+
+<%= link_to 'Edit', edit_store_path(@store) %> |
+<%= link_to 'Back', stores_path %>
